@@ -1,10 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Nyong_git\\CPP_Study01\\",
+  "WorkspaceRootPath": "C:\\Nyong_git\\CPP_Study02\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2C2D5E8C-AFB3-4CCE-B7AF-71954D4E3D51}|CPP_Study01.vcxproj|C:\\Nyong_git\\CPP_Study01\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{2C2D5E8C-AFB3-4CCE-B7AF-71954D4E3D51}|CPP_Study01.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7E07684E-7500-459D-9EF0-E4E8DCC7BB9E}|CPP_Study02.vcxproj|C:\\Nyong_git\\CPP_Study02\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7E07684E-7500-459D-9EF0-E4E8DCC7BB9E}|CPP_Study02.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,13 +20,13 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Nyong_git\\CPP_Study01\\main.cpp",
+              "DocumentMoniker": "C:\\Nyong_git\\CPP_Study02\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
-              "ToolTip": "C:\\Nyong_git\\CPP_Study01\\main.cpp",
+              "ToolTip": "C:\\Nyong_git\\CPP_Study02\\main.cpp",
               "RelativeToolTip": "main.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAfAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAwCoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-22T06:27:34.089Z",
+              "WhenOpened": "2024-06-24T10:16:12.481Z",
               "EditorCaption": ""
             }
           ]
