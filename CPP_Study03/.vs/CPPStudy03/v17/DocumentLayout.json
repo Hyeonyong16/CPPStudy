@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Nyong\\Desktop\\Study_git\\CPPStudy\\CPP_Study03\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A01F0AF0-9223-4BAC-A820-C31CCBBEFC7A}|CPPStudy03.vcxproj|C:\\Users\\Nyong\\Desktop\\Study_git\\CPPStudy\\CPP_Study03\\main01(\uC7AC\uADC0\uD568\uC218).cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A01F0AF0-9223-4BAC-A820-C31CCBBEFC7A}|CPPStudy03.vcxproj|solutionrelative:main01(\uC7AC\uADC0\uD568\uC218).cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A01F0AF0-9223-4BAC-A820-C31CCBBEFC7A}|CPPStudy03.vcxproj|C:\\Users\\Nyong\\Desktop\\Study_git\\CPPStudy\\CPP_Study03\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A01F0AF0-9223-4BAC-A820-C31CCBBEFC7A}|CPPStudy03.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -14,19 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\Nyong\\Desktop\\Study_git\\CPPStudy\\CPP_Study03\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
               "ToolTip": "C:\\Users\\Nyong\\Desktop\\Study_git\\CPPStudy\\CPP_Study03\\main.cpp",
               "RelativeToolTip": "main.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADUAAAAXAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-25T12:21:54.269Z",
+              "WhenOpened": "2024-06-26T13:46:18.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main01(\uC7AC\uADC0\uD568\uC218).cpp",
+              "DocumentMoniker": "C:\\Users\\Nyong\\Desktop\\Study_git\\CPPStudy\\CPP_Study03\\main01(\uC7AC\uADC0\uD568\uC218).cpp",
+              "RelativeDocumentMoniker": "main01(\uC7AC\uADC0\uD568\uC218).cpp",
+              "ToolTip": "C:\\Users\\Nyong\\Desktop\\Study_git\\CPPStudy\\CPP_Study03\\main01(\uC7AC\uADC0\uD568\uC218).cpp",
+              "RelativeToolTip": "main01(\uC7AC\uADC0\uD568\uC218).cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-26T13:39:40.672Z",
               "EditorCaption": ""
             }
           ]
