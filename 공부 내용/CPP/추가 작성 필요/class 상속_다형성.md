@@ -1,4 +1,4 @@
-# class 상속
+![virtual function drawio (1)](https://github.com/user-attachments/assets/af126ef6-5874-4829-8eed-19e5b273516a)# class 상속
 ## 다형성
 상속한 class 의 경우 한가지 타입으로 다양한 형태를 나타낼 수 있다.
 
@@ -104,6 +104,8 @@ class Parent
 순수 가상 함수가 존재하는 클래스를 추상 클래스(abstract class)라고 한다.
 
 ### 가상 함수의 구동 원리
+![virtual function drawio (1)](https://github.com/user-attachments/assets/50eabe9a-2d18-4caf-b9a9-aef5d0b9de55)
+
 가상함수 선언 시 눈에 보이지 않는 가상함수 테이블 포인터 변수가 메모리 가장 앞에 추가된다.(포인터 변수이므로 8 바이트)
   - 시작주소(맨 앞)에 있어야 부모 포인터로 접근시에도 테이블 포인터 변수에 접근해 함수를 가져올 수 있다.
 
