@@ -17,7 +17,7 @@
 
 ### 후입선출(LIFO)
 ![스택 drawio](https://github.com/user-attachments/assets/c551a42e-8c9b-49c3-b8bc-4dd1d2670dac)
-쌓인 데이터의 가장 윗부분을 Top 이라고 한다.
+데이터가 들어가고 나가는 부분을 Top 이라고 한다.
 
 데이터를 여러개 push 할 시 가장 나중에 push한 데이터가 가장 위에 저장되며 pop 할 경우 가장 위에서 부터 순서대로 데이터가 꺼내진다.
 
