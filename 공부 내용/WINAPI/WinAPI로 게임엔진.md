@@ -1,9 +1,19 @@
 # WinAPI 게임 엔진 로직
 
 1. main
-    - 메시지 처리
+    - CEngine - Init
+      1. 윈도우 생성
+      2. 윈도우 출력
+      3. DC, GDIObject 생성
+      4. 매니저 생성 및 초기화
+         - CPathMgr
+         - CTimeMgr
+         - CKeyMgr
+         - CLevelMgr
+      5. 더블 버퍼링을 위한 추가 버퍼 생성
+    - 메시지 루프
     - CEngine - Progress
-2. CEngine - Progress
+3. CEngine - Progress
     - 매니저의 Tick 실행
       1. CTimeMgr - Tick
       2. CKeyMgr - Tick
