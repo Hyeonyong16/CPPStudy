@@ -3,7 +3,7 @@ class Account
 {
 public:
 	Account();
-	Account(int _id, const char* _name, int _balance);
+	Account(int _id, const char* _name);	// 개설하면 잔액은 0원이니까
 	~Account();
 
 	int GetId() { return id; }
