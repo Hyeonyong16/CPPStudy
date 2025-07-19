@@ -23,6 +23,6 @@ Account::~Account()
 	}
 }
 
-void Account::SetName(const char* _name)
-{
-}
+//void Account::SetName(const char* _name)
+//{
+//}

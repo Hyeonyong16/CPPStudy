@@ -11,7 +11,7 @@ public:
 	int GetBalance() { return balance; }
 
 	void SetId(const int _id) { id = _id; }
-	void SetName(const char* _name);
+	//void SetName(const char* _name);
 	void SetBalance(const int _balance) { balance = _balance; }
 
 private:

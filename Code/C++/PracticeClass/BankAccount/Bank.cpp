@@ -13,13 +13,17 @@ Bank::Bank()
 
 Bank::~Bank()
 {
-	
+	// 현재 계좌 개수만큼 반복문
+	for (int i = 0; i < accountNum; ++i)
+	{
+		delete accounts[i];
+		accounts[i] = nullptr;
+	}
 }
 
 void Bank::Run()
 {
-	int input = 0;
-
+	char input = 0;
 	while (true)
 	{
 		if (input == 'q' || input == 'Q') {
@@ -32,18 +36,19 @@ void Bank::Run()
 			<< "키를 입력해주세요: ";
 
 		std::cin >> input;
+		std::cin.get();
 		switch (input)
 		{
-		case 1:
+		case '1':
 			CreateAccount();
 			break;
-		case 2:
+		case '2':
 			Deposit();
 			break;
-		case 3:
+		case '3':
 			Withdraw();
 			break;
-		case 4:
+		case '4':
 			Inquire();
 			break;
 		case 'Q':
@@ -60,7 +65,7 @@ void Bank::CreateAccount()
 {
 	// 개설할 계좌의 정보를 받음
 	int id;
-	char* name;
+	char name[100] = { };
 	std::cout << "\n계좌번호를 입력: ";
 	std::cin >> id;
 
@@ -86,15 +91,63 @@ void Bank::Deposit()
 	std::cout << "\n입금 금액 입력: ";
 	std::cin >> money;
 
+	Account* userAccount = FindAccount(id);
+	if (nullptr == userAccount)
+	{
+		std::cout << "\n계좌번호가 존재하지 않습니다.\n\n\n";
+		return;
+	}
 
+	else
+	{
+		userAccount->SetBalance(userAccount->GetBalance() + money);
+		std::cout << "\n" << money << "원 입금하였습니다. 현재 잔액: " << userAccount->GetBalance() << "\n\n\n";
+	}
 }
 
 void Bank::Withdraw()
 {
+	int id;
+	int money;
+	std::cout << "\n계좌번호를 입력: ";
+	std::cin >> id;
+
+	Account* userAccount = FindAccount(id);
+	if (nullptr == userAccount)
+	{
+		std::cout << "\n계좌번호가 존재하지 않습니다.\n\n\n";
+		return;
+	}
+
+	else
+	{
+		std::cout << "\n" << userAccount->GetBalance() << "원 있습니다.\n";
+		std::cout << "출금할 금액을 입력: ";
+		std::cin >> money;
+
+		if (money > userAccount->GetBalance())
+		{
+			std::cout << "\n잔고보다 금액이 많습니다.\n\n\n";
+		}
+		else
+		{
+			userAccount->SetBalance(userAccount->GetBalance() - money);
+			std::cout << "\n" << money << "원 출금하였습니다. 현재 잔액: " << userAccount->GetBalance() << "\n\n\n";
+		}
+	}
 }
 
 void Bank::Inquire()
 {
+	// 현재 계좌 개수만큼 반복문
+	for (int i = 0; i < accountNum; ++i)
+	{
+		std::cout << "\n계좌번호: " << accounts[i]->GetId()
+			<< " 고객 이름: " << accounts[i]->GetName()
+			<< " 잔액: " << accounts[i]->GetBalance();
+	}
+
+	std::cout << "\n\n\n";
 }
 
 // 
