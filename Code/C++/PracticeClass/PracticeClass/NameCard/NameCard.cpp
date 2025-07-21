@@ -27,6 +27,25 @@ NameCard::NameCard(const char* _name, const char* _phone, const char* _email, co
 	SETSTRING(job);
 }
 
+NameCard::NameCard(const NameCard& _origin)
+{
+	size_t length = strlen(_origin.name) + 1;
+	name = new char[length];
+	strcpy_s(name, length, _origin.name);
+
+	length = strlen(_origin.phone) + 1;
+	phone = new char[length];
+	strcpy_s(phone, length, _origin.phone);
+
+	length = strlen(_origin.email) + 1;
+	email = new char[length];
+	strcpy_s(email, length, _origin.email);
+
+	length = strlen(_origin.job) + 1;
+	job = new char[length];
+	strcpy_s(job, length, _origin.job);
+}
+
 NameCard::~NameCard()
 {
 	DELETEARRAY(name);

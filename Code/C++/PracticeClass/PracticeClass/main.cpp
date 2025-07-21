@@ -18,7 +18,10 @@ int main()
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	//_CrtSetBreakAlloc(216);
 
+	int qNum = 1;
+
 	// 1번 계산기 문제
+	if (1 == qNum)
 	{
 		Calculator calculator;
 
@@ -31,6 +34,7 @@ int main()
 	}
 
 	// 2번 Printer 문제
+	if (2 == qNum)
 	{
 		Printer printer;
 		printer.ShowString();
@@ -43,6 +47,7 @@ int main()
 	}
 
 	// 3번 사각형, 원 문제
+	if (3 == qNum)
 	{
 		Rectangle rect = Rectangle(3, 4);    // Rectangle(가로길이, 세로길이)
 		std::cout << "면적: " << rect.GetArea() << "\n";
@@ -54,17 +59,19 @@ int main()
 	}
 
 	// 4번 명함 정보 저장 문제
+	if (4 == qNum)
 	{
-		NameCard* nameCards[3];
-		char* input = nullptr;
-		for (int i = 0; i < 3; ++i)
-		{
-			//std::cout
-			//nameCards
-		}
+		//NameCard* nameCards[3];
+		//char* input = nullptr;
+		//for (int i = 0; i < 3; ++i)
+		//{
+		//	//std::cout
+		//	//nameCards
+		//}
 		// NameCard (이름, 전화번호, 이메일, 직업)
-		//NameCard jang("Jane Se Yun", "010-000-0000", "abd@def.com", "Lecturer");
-		//jang.ShowData();
+		NameCard jang("Jane Se Yun", "010-000-0000", "abd@def.com", "Lecturer");
+		NameCard jang2 = NameCard(jang);
+		jang2.ShowData();
 	}
 
 	std::cin.get();
