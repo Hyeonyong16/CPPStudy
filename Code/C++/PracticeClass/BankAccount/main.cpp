@@ -28,4 +28,6 @@ int main()
 
 	Bank bank;
 	bank.Run();
+
+	std::cin.get();
 }

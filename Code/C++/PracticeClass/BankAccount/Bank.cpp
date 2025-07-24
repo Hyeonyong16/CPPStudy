@@ -2,6 +2,10 @@
 
 #include <iostream>
 #include "Account.h"
+#include "CreditAccount.h"
+#include "DonationAccount.h"
+
+#define DIVIDELINE(NAME) std::cout << "====="#NAME"=====\n";
 
 Bank::Bank()
 {
@@ -21,22 +25,18 @@ Bank::~Bank()
 	}
 }
 
+// 기본 메뉴 구동
 void Bank::Run()
 {
 	char input = 0;
 	while (true)
-	{
-		if (input == 'q' || input == 'Q') {
-			std::cout << "종료합니다.\n";
-			break;
-		}
-
+	{		
+		DIVIDELINE(Menu)
 		std::cout
 			<< "1.계좌개설, 2.입금, 3.출금, 4:전체 고객 잔액 조회, Q:종료\n"
 			<< "키를 입력해주세요: ";
 
 		std::cin >> input;
-		std::cin.get();
 		switch (input)
 		{
 		case '1':
@@ -53,7 +53,8 @@ void Bank::Run()
 			break;
 		case 'Q':
 		case 'q':
-			break;
+			std::cout << "종료합니다.\n";
+			return;
 		default:
 			std::cout << "잘못 입력하셨습니다.\n";
 			break;
@@ -61,96 +62,112 @@ void Bank::Run()
 	}
 }
 
+// 계좌 개설
 void Bank::CreateAccount()
 {
+	DIVIDELINE(CreatAccount)
 	// 개설할 계좌의 정보를 받음
 	int id;
+	int Accountval;	// 1: 일반, 2: 신용, 3: 기부
 	char name[100] = { };
-	std::cout << "\n계좌번호를 입력: ";
+	std::cout << "계좌번호를 입력: ";
 	std::cin >> id;
 
-	std::cout << "\n고객 이름을 입력: ";
+	std::cout << "고객 이름을 입력: ";
 	std::cin >> name;
 
-	// 마지막 계좌 뒤 순서에 새로운 계좌 생성
-	accounts[accountNum] = new Account(id, name);
+	std::cout << "계좌 종류 입력(1 일반, 2 신용, 3 기부): ";
+	std::cin >> Accountval;
+
+	if(Accountval == 1)
+	{
+		// 마지막 계좌 뒤 순서에 새로운 계좌 생성
+		accounts[accountNum] = new Account(id, name);
+	}
+	else if (Accountval == 2)
+	{
+		// 마지막 계좌 뒤 순서에 새로운 계좌 생성
+		accounts[accountNum] = new CreditAccount(id, name);
+	}
+	else if (Accountval == 3)
+	{
+		// 마지막 계좌 뒤 순서에 새로운 계좌 생성
+		accounts[accountNum] = new DonationAccount(id, name);
+	}
+	else
+	{
+		std::cout << "계좌 종류를 잘못 입력하셨습니다.\n";
+		return;
+	}
 
 	// 계좌가 생성되었으니 계좌 수 증가
 	++accountNum;
-
-	std::cout << "\n\n\n";
 }
 
+// 입금 기능
 void Bank::Deposit()
 {
+	DIVIDELINE(Deposit)
 	int id;
 	int money;
-	std::cout << "\n계좌번호를 입력: ";
+	std::cout << "계좌번호를 입력: ";
 	std::cin >> id;
 
-	std::cout << "\n입금 금액 입력: ";
+	std::cout << "입금 금액 입력: ";
 	std::cin >> money;
 
+	// 배열에서 계좌 찾기 
 	Account* userAccount = FindAccount(id);
+
+	// 계좌가 없을 경우 예외처리
 	if (nullptr == userAccount)
 	{
-		std::cout << "\n계좌번호가 존재하지 않습니다.\n\n\n";
+		std::cout << "\n계좌번호가 존재하지 않습니다.\n";
 		return;
 	}
 
-	else
-	{
-		userAccount->SetBalance(userAccount->GetBalance() + money);
-		std::cout << "\n" << money << "원 입금하였습니다. 현재 잔액: " << userAccount->GetBalance() << "\n\n\n";
-	}
+	userAccount->Deposit(money);
 }
 
+// 출금 기능
 void Bank::Withdraw()
 {
+	// todo: 테스트
+	DIVIDELINE(Withdraw)
 	int id;
 	int money;
-	std::cout << "\n계좌번호를 입력: ";
+	std::cout << "계좌번호를 입력: ";
 	std::cin >> id;
 
+	// 배열에서 계좌 찾기 
 	Account* userAccount = FindAccount(id);
+
+	// 계좌가 없을 경우 예외처리
 	if (nullptr == userAccount)
 	{
-		std::cout << "\n계좌번호가 존재하지 않습니다.\n\n\n";
+		std::cout << "\n계좌번호가 존재하지 않습니다.\n";
 		return;
 	}
 
-	else
-	{
-		std::cout << "\n" << userAccount->GetBalance() << "원 있습니다.\n";
-		std::cout << "출금할 금액을 입력: ";
-		std::cin >> money;
+	std::cout << userAccount->GetBalance() << "원 있습니다.\n";
+	std::cout << "출금할 금액을 입력: ";
+	std::cin >> money;
 
-		if (money > userAccount->GetBalance())
-		{
-			std::cout << "\n잔고보다 금액이 많습니다.\n\n\n";
-		}
-		else
-		{
-			userAccount->SetBalance(userAccount->GetBalance() - money);
-			std::cout << "\n" << money << "원 출금하였습니다. 현재 잔액: " << userAccount->GetBalance() << "\n\n\n";
-		}
-	}
+	userAccount->Withdraw(money);
 }
 
+// 현재 저장된 계좌의 정보를 전부 출력하는 함수
 void Bank::Inquire()
 {
+	DIVIDELINE(Inquire)
 	// 현재 계좌 개수만큼 반복문
 	for (int i = 0; i < accountNum; ++i)
 	{
-		std::cout << "\n계좌번호: " << accounts[i]->GetId()
-			<< " 고객 이름: " << accounts[i]->GetName()
-			<< " 잔액: " << accounts[i]->GetBalance();
+		accounts[i]->Print();
 	}
-
-	std::cout << "\n\n\n";
 }
 
-// 
+// 입력받은 id로 동일한 id의 계좌를 찾는 함수
 Account* Bank::FindAccount(int _id)
 {
 	// 현재 계좌 개수만큼 반복문

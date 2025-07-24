@@ -17,6 +17,8 @@ public:
 
 	Account* FindAccount(int _id);			// 계좌 번호로 계좌 순서 찾는 함수
 
+
+
 private:
 	Account*	accounts[100] = { };	// 계좌 정보가 들어있는 배열
 	int			accountNum = 0;			// 현재 개설된 계좌 수
