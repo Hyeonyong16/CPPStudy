@@ -1,6 +1,8 @@
 #include "Bank.h"
 
 #include <iostream>
+#include <cassert>
+
 #include "Account.h"
 #include "CreditAccount.h"
 #include "DonationAccount.h"
@@ -28,6 +30,7 @@ Bank::~Bank()
 // 기본 메뉴 구동
 void Bank::Run()
 {
+	Load();
 	char input = 0;
 	while (true)
 	{		
@@ -54,6 +57,7 @@ void Bank::Run()
 		case 'Q':
 		case 'q':
 			std::cout << "종료합니다.\n";
+			Save();
 			return;
 		default:
 			std::cout << "잘못 입력하셨습니다.\n";
@@ -180,5 +184,94 @@ Account* Bank::FindAccount(int _id)
 
 	// 계좌가 없으면 nullptr 반환
 	return nullptr;
+}
+
+void Bank::Save()
+{
+	char buffer[255] = { };
+
+	FILE* file = nullptr;
+	fopen_s(&file, "AccountInfo.txt", "w");
+	if (nullptr != file)
+	{
+		fprintf(file,
+			"accountNum=%d\n",
+			accountNum
+		);
+		for (int i = 0; i < accountNum; ++i)
+		{
+			fprintf(file,
+				"accountval=%d id=%d name=%s balance=%d ",
+				accounts[i]->GetAccountVal(), accounts[i]->GetId(), accounts[i]->GetName(), accounts[i]->GetBalance()
+			);
+
+			if (accounts[i]->GetAccountVal() == 2) 
+			{
+				DonationAccount* tempAcc = dynamic_cast<DonationAccount*>(accounts[i]);
+				assert(tempAcc);
+
+				fprintf(file,
+					"donationMoney=%d ", 
+					tempAcc->GetDonationMoney()
+				);
+			}
+			fprintf(file,
+				"\n");
+		}
+	}
+
+	fclose(file);
+}
+
+void Bank::Load()
+{
+	int _accountVal = 0;
+	int _id = 0;
+	char _name[255] = { };
+	int _balance = 0;
+	int _donationMoney = 0;
+
+	FILE* file = nullptr;
+	fopen_s(&file, "AccountInfo.txt", "r");
+	if (nullptr != file)
+	{
+		int _accountNum = 0;
+		fscanf_s(file,
+			"accountNum=%d\n",
+			&_accountNum
+		);
+
+		for (int i = 0; i < _accountNum; ++i)
+		{
+			fscanf_s(file,
+				"accountval=%d id=%d name=%s balance=%d ",
+				&_accountVal, &_id, _name, 255, &_balance
+			);
+
+			if (_accountVal == 2)
+			{
+				fscanf_s(file,
+					"donationMoney=%d ",
+					&_donationMoney
+				);
+				
+
+			}
+			else  if (_accountVal == 1)
+			{
+
+			}
+			else
+			{
+
+			}
+			
+			fscanf_s(file,
+				"\n"
+			);
+		}
+	}
+
+	fclose(file);
 }
 

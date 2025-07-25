@@ -1,12 +1,7 @@
 #include "CreditAccount.h"
 
-CreditAccount::CreditAccount()
-	: Account()
-{
-}
-
 CreditAccount::CreditAccount(int _id, const char* _name)
-	: Account(_id, _name)
+	: Account(_id, _name, 1)
 {
 }
 

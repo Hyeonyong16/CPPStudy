@@ -1,13 +1,8 @@
 #include "DonationAccount.h"
 #include <iostream>
 
-DonationAccount::DonationAccount()
-	: Account(), donationMoney(0)
-{
-}
-
 DonationAccount::DonationAccount(int _id, const char* _name)
-	: Account(_id, _name), donationMoney(0)
+	: Account(_id, _name, 2), donationMoney(0)
 {
 }
 

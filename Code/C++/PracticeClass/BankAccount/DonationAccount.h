@@ -5,7 +5,6 @@ class DonationAccount :
     public Account
 {
 public:
-	DonationAccount();
 	DonationAccount(int _id, const char* _name);
 	~DonationAccount();
 

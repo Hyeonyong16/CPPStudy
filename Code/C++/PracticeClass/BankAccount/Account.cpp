@@ -7,7 +7,7 @@ Account::Account()
 }
 
 Account::Account(int _id, const char* _name, int _accountVal)
-	: id(_id), balance(0)
+	: id(_id), balance(0), accountVal(_accountVal)
 {
 	size_t length = strlen(_name) + 1;
 	name = new char[length];
@@ -18,6 +18,7 @@ Account::Account(const Account& _origin)
 {
 	id = _origin.id;
 	balance = _origin.balance;
+	accountVal = _origin.accountVal;
 
 	int length = strlen(_origin.name) + 1;
 	name = new char[length];

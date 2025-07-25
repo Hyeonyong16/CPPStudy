@@ -17,7 +17,8 @@ public:
 
 	Account* FindAccount(int _id);			// 계좌 번호로 계좌 순서 찾는 함수
 
-
+	void Save();	// 변경이 있으면 계좌 저장
+	void Load();	// 계좌 로드
 
 private:
 	Account*	accounts[100] = { };	// 계좌 정보가 들어있는 배열

@@ -6,7 +6,6 @@ class CreditAccount :
     public Account
 {
 public:
-    CreditAccount();
     CreditAccount(int _id, const char* _name);
     ~CreditAccount();
 
