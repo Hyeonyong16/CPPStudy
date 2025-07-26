@@ -2,8 +2,15 @@
 #include <iostream>
 
 DonationAccount::DonationAccount(int _id, const char* _name)
-	: Account(_id, _name, 2), donationMoney(0)
+	: Account(_id, _name, 0), donationMoney(0)
 {
+	SetAccountVal(2);
+}
+
+DonationAccount::DonationAccount(int _id, const char* _name, int _balance, int _donationMoney)
+	: Account(_id, _name, _balance), donationMoney(_donationMoney)
+{
+	SetAccountVal(2);
 }
 
 DonationAccount::~DonationAccount()

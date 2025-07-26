@@ -3,13 +3,14 @@
 
 // 신용 계좌 - 입금 때마다 1% 이자를 줌
 class CreditAccount :
-    public Account
+	public Account
 {
 public:
-    CreditAccount(int _id, const char* _name);
-    ~CreditAccount();
+	CreditAccount(int _id, const char* _name);
+	CreditAccount(int _id, const char* _name, int _balance);
+	~CreditAccount();
 
-    virtual void Deposit(int _money) override;
+	virtual void Deposit(int _money) override;
 
 private:
 

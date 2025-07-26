@@ -33,9 +33,9 @@ void Bank::Run()
 	Load();
 	char input = 0;
 	while (true)
-	{		
+	{
 		DIVIDELINE(Menu)
-		std::cout
+			std::cout
 			<< "1.계좌개설, 2.입금, 3.출금, 4:전체 고객 잔액 조회, Q:종료\n"
 			<< "키를 입력해주세요: ";
 
@@ -70,8 +70,8 @@ void Bank::Run()
 void Bank::CreateAccount()
 {
 	DIVIDELINE(CreatAccount)
-	// 개설할 계좌의 정보를 받음
-	int id;
+		// 개설할 계좌의 정보를 받음
+		int id;
 	int Accountval;	// 1: 일반, 2: 신용, 3: 기부
 	char name[100] = { };
 	std::cout << "계좌번호를 입력: ";
@@ -83,10 +83,10 @@ void Bank::CreateAccount()
 	std::cout << "계좌 종류 입력(1 일반, 2 신용, 3 기부): ";
 	std::cin >> Accountval;
 
-	if(Accountval == 1)
+	if (Accountval == 1)
 	{
 		// 마지막 계좌 뒤 순서에 새로운 계좌 생성
-		accounts[accountNum] = new Account(id, name);
+		accounts[accountNum] = new Account(id, name, 0);
 	}
 	else if (Accountval == 2)
 	{
@@ -112,7 +112,7 @@ void Bank::CreateAccount()
 void Bank::Deposit()
 {
 	DIVIDELINE(Deposit)
-	int id;
+		int id;
 	int money;
 	std::cout << "계좌번호를 입력: ";
 	std::cin >> id;
@@ -138,7 +138,7 @@ void Bank::Withdraw()
 {
 	// todo: 테스트
 	DIVIDELINE(Withdraw)
-	int id;
+		int id;
 	int money;
 	std::cout << "계좌번호를 입력: ";
 	std::cin >> id;
@@ -164,11 +164,11 @@ void Bank::Withdraw()
 void Bank::Inquire()
 {
 	DIVIDELINE(Inquire)
-	// 현재 계좌 개수만큼 반복문
-	for (int i = 0; i < accountNum; ++i)
-	{
-		accounts[i]->Print();
-	}
+		// 현재 계좌 개수만큼 반복문
+		for (int i = 0; i < accountNum; ++i)
+		{
+			accounts[i]->Print();
+		}
 }
 
 // 입력받은 id로 동일한 id의 계좌를 찾는 함수
@@ -188,8 +188,6 @@ Account* Bank::FindAccount(int _id)
 
 void Bank::Save()
 {
-	char buffer[255] = { };
-
 	FILE* file = nullptr;
 	fopen_s(&file, "AccountInfo.txt", "w");
 	if (nullptr != file)
@@ -205,13 +203,13 @@ void Bank::Save()
 				accounts[i]->GetAccountVal(), accounts[i]->GetId(), accounts[i]->GetName(), accounts[i]->GetBalance()
 			);
 
-			if (accounts[i]->GetAccountVal() == 2) 
+			if (accounts[i]->GetAccountVal() == 2)
 			{
 				DonationAccount* tempAcc = dynamic_cast<DonationAccount*>(accounts[i]);
 				assert(tempAcc);
 
 				fprintf(file,
-					"donationMoney=%d ", 
+					"donationMoney=%d ",
 					tempAcc->GetDonationMoney()
 				);
 			}
@@ -230,46 +228,50 @@ void Bank::Load()
 	char _name[255] = { };
 	int _balance = 0;
 	int _donationMoney = 0;
+	int _accountNum = 0;
 
 	FILE* file = nullptr;
 	fopen_s(&file, "AccountInfo.txt", "r");
-	if (nullptr != file)
+	if (nullptr == file)
 	{
-		int _accountNum = 0;
+		std::cout << "파일이 없습니다.\n";
+		return;
+	}
+
+	fscanf_s(file,
+		"accountNum=%d\n",
+		&accountNum
+	);
+
+	for (int i = 0; i < accountNum; ++i)
+	{
 		fscanf_s(file,
-			"accountNum=%d\n",
-			&_accountNum
+			"accountval=%d id=%d name=%s balance=%d ",
+			&_accountVal, &_id, _name, 255, &_balance
 		);
 
-		for (int i = 0; i < _accountNum; ++i)
+		if (_accountVal == 2)
 		{
 			fscanf_s(file,
-				"accountval=%d id=%d name=%s balance=%d ",
-				&_accountVal, &_id, _name, 255, &_balance
+				"donationMoney=%d ",
+				&_donationMoney
 			);
 
-			if (_accountVal == 2)
-			{
-				fscanf_s(file,
-					"donationMoney=%d ",
-					&_donationMoney
-				);
-				
+			accounts[i] = new DonationAccount(_id, _name, _balance, _donationMoney);
 
-			}
-			else  if (_accountVal == 1)
-			{
-
-			}
-			else
-			{
-
-			}
-			
-			fscanf_s(file,
-				"\n"
-			);
 		}
+		else  if (_accountVal == 1)
+		{
+			accounts[i] = new CreditAccount(_id, _name, _balance);
+		}
+		else
+		{
+			accounts[i] = new Account(_id, _name, _balance);
+		}
+
+		fscanf_s(file,
+			"\n"
+		);
 	}
 
 	fclose(file);

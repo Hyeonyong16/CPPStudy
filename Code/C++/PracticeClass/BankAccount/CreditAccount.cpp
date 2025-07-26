@@ -1,8 +1,15 @@
 #include "CreditAccount.h"
 
 CreditAccount::CreditAccount(int _id, const char* _name)
-	: Account(_id, _name, 1)
+	: Account(_id, _name, 0)
 {
+	SetAccountVal(1);
+}
+
+CreditAccount::CreditAccount(int _id, const char* _name, int _balance)
+	: Account(_id, _name, _balance)
+{
+	SetAccountVal(1);
 }
 
 CreditAccount::~CreditAccount()

@@ -3,7 +3,7 @@ class Account
 {
 public:
 	Account();
-	Account(int _id, const char* _name, int _accountVal = 0);	// 개설하면 잔액은 0원이니까
+	Account(int _id, const char* _name, int _balance);	// 개설하면 잔액은 0원이니까
 
 	Account(const Account& _origin);		// 복사생성자
 

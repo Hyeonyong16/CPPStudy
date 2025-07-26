@@ -6,8 +6,8 @@ Account::Account()
 {
 }
 
-Account::Account(int _id, const char* _name, int _accountVal)
-	: id(_id), balance(0), accountVal(_accountVal)
+Account::Account(int _id, const char* _name, int _balance)
+	: id(_id), balance(_balance), accountVal(0)
 {
 	size_t length = strlen(_name) + 1;
 	name = new char[length];
