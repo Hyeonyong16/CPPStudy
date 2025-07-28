@@ -131,6 +131,7 @@ void Bank::Deposit()
 	}
 
 	userAccount->Deposit(money);
+	Save();
 }
 
 // 출금 기능
@@ -158,6 +159,7 @@ void Bank::Withdraw()
 	std::cin >> money;
 
 	userAccount->Withdraw(money);
+	Save();
 }
 
 // 현재 저장된 계좌의 정보를 전부 출력하는 함수
